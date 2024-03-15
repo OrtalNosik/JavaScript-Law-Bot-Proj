@@ -1,0 +1,207 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    background-color: rgb(122, 247, 158);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-style: dashed;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    
+    
+
+}
+
+header button {
+    background-color: transparent;
+    text-decoration: none;
+    border: 0px solid #ffffff;
+    outline: none;
+
+}
+
+header button:hover {
+    border-bottom: 1px solid white;
+    cursor: crosshair;
+}
+
+header h1 {
+    font-size: 50px;
+    font-family: elliotsixregular;
+    text-shadow: 2px 2px rgb(191, 243, 206);
+    
+}
+
+.timer {
+    border-style: solid;
+    border-width: 2px;
+    font-size: x-large;
+    padding: 5px;
+    border-color: #9ecaed;
+    box-shadow: 0 0 13px #9ecaed;
+
+}
+
+.hiscore {
+    padding-bottom: 10px;
+}
+
+
+                                                  /* main section intro to the quiz */
+
+.intro {
+    text-align: center;
+    padding-top: 40px;
+    line-height: 30px;
+}
+
+.intro img {
+    height: 350px;
+    width: auto;
+}
+
+.intro h1 {
+    font-size: 40px;
+    padding-bottom: 20px;
+    font-family: David;
+}
+
+.intro p {
+    font-size: x-large;
+    font-family: David;
+}
+
+.intro button {
+    font-size: xx-large;
+    margin-top: 35px;
+    background-color: rgb(122, 247, 158);
+    padding: 15px;
+    border-radius: 12px;
+    cursor: crosshair;
+    font-family: David;
+}
+
+.intro button:hover {
+    background-color: rgb(184, 251, 203);
+    cursor: crosshair;
+}
+                                                           /*quiz buttons*/
+.btn {
+    font-size: large;
+    background-color: rgb(122, 247, 158);
+    padding: 7px;
+    border-radius: 12px;
+    cursor: crosshair;
+    width: 500px;
+    outline: none;
+}
+
+.btn:hover {
+    background-color: rgb(122, 247, 158);
+    cursor: crosshair;
+    text-shadow: 2px 1px #D6D3FC;
+}
+
+.button {
+    font-size: large;
+    background-color: rgb(122, 247, 158);
+    padding: 7px;
+    border-radius: 12px;
+    cursor: crosshair;
+    width: 195px;
+    outline: none;
+    
+}
+
+.button:hover {
+    background-color: rgb(188, 246, 204);
+    cursor: crosshair;
+    text-shadow: 2px 1px #fafafa;
+}
+                                                            /* quiz questions & answers*/
+.questions {
+    text-align: center;
+    padding-top: 40px;
+    border: black, 1px
+}
+
+.questions button {
+    margin: 10px;
+    padding: 10px;
+
+}
+
+.questions ul {
+    margin-top: 20px;
+}
+
+#correct-wrong p {
+    font-size: 45px;
+}
+
+                                                                  /* submit score */
+.final-score {
+    text-align: center;
+    padding-top: 40px;
+}
+
+.final-score h2 {
+    font-size: 45px;
+    margin-bottom: 20px;
+}
+
+                                                                   /*end */
+.end {
+    text-align: center;
+    
+}
+
+.end h2 {
+    padding-top: 20px;
+}
+
+#end li {
+    font-weight: bold;
+    line-height: 30px;
+    
+}
+
+#initial-input {
+    height: 35px;
+    border: 3px solid black;
+    border-radius: 4px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    text-align: center;
+    
+}
+
+#initial-input:focus {
+    border: 3px solid rgb(105, 248, 181);
+}
+
+#play-end {
+    margin-top: 20px;
+}
+
+/*hide these sections until called on in the js file*/
+#questions,
+#correct-wrong,
+#final-score,
+#end{
+    display: none;  
+  } 

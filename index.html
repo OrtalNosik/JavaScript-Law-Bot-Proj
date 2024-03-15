@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syber Law Bot</title>
+    <link rel="shortcut icon" type="image/jpg" href="./assets/images/favicon.ico"/>
+    <link rel="stylesheet" href="./assets/css/stylesheet.css">
+    <link rel="stylesheet" href="./assets/css/font.css">
+    <style>
+        #username {
+            padding: 5px;
+            margin: 5px 0;
+            border: 2px solid rgb(122, 247, 158);;
+            font-size: 14px;
+            width: 80%;
+            box-sizing: border-box;
+            font-family: David;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Syber Law Bot</h1>
+    </header>
+
+    <main>
+        <section id="intro" class="intro">
+            <h1>ברוך הבא לבוט האינטרנטי של דיני סייבר</h1>
+            <img src="./assets/images/law.png">
+            <p>,אתה מוזמן לענות על השאלות הבאות<br> 
+                .עבור כל שאלה המערכת שלנו תחשב אם יש עילה לתביעה או לא בהתאם לבחירותך<br> 
+                ?תחילה מה השם שלך
+            </p>
+         <!-- Add user input section -->
+        <section id="user-input" class="user-input">
+            <input type="text" id="username" name="username" placeholder="הכנס את שמך בבקשה"><br>
+            <label for="plaintiff">תובע</label>
+            <input type="radio" id="plaintiff" name="plaintiff"><br>
+            <label for="defendant" >נתבע</label>
+            <input type="radio" id="defendant" name="plaintiff">
+        </section>
+            <button id="start" type="button">!התחל</button>
+        </section>
+
+        <section id="questions" class="questions">
+            <h2 id="question">Question goes here</h2>
+            <ul>
+                <li>
+                    <button id="asw1" type="button" class="btn">answer1</button>
+                </li>
+                <li>
+                    <button id="asw2" type="button" class="btn">answer2</button>
+                </li>
+                <li>
+                    <button id="asw3" type="button" class="btn">answer3</button>
+                </li>
+                <li>
+                    <button id="asw4" type="button" class="btn">answer4</button>
+                </li>
+            </ul>
+            <div id="correct-wrong">
+                    <!--display user answer-->
+            </div>
+        </section>
+
+
+    </main>
+
+    <script>
+        // JavaScript to handle user input
+        document.getElementById("start").addEventListener("click", function() {
+            var username = document.getElementById("username").value;
+            var isPlaintiff = document.getElementById("plaintiff").checked;
+            var isDefendant = document.getElementById("defendant").checked;
+
+            console.log("Username:", username);
+            console.log("Plaintiff:", isPlaintiff);
+            console.log("Defendant:", isDefendant);
+        });  
+    </script>
+    <script src="./assets/js/script.js"></script>  
+</body>
+</html>

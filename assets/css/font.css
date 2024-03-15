@@ -1,0 +1,22 @@
+@font-face {
+    font-family: 'elliotsixregular';
+    src: url('../fonts/elliotsix-webfont.woff2') format('woff2'),
+         url('../fonts/elliotsix-webfont.woff') format('woff'),
+         url('../fonts/elliotsix-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'elliotsixregular';
+    src: url('../fonts/elliotsix-webfont.woff2') format('woff2'),
+         url('../fonts/elliotsix-webfont.woff') format('woff'),
+         url('../fonts/elliotsix-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
