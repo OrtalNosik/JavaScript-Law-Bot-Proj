@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Syber Law Bot</title>
+    <title>Cyber Law Bot</title>
     <link rel="shortcut icon" type="image/jpg" href="./assets/images/favicon.ico"/>
     <link rel="stylesheet" href="./assets/css/stylesheet.css">
     <link rel="stylesheet" href="./assets/css/font.css">
@@ -12,17 +12,52 @@
         #username {
             padding: 5px;
             margin: 5px 0;
-            border: 2px solid rgb(122, 247, 158);;
+            border: 2px solid rgb(122, 247, 158);
             font-size: 14px;
             width: 80%;
             box-sizing: border-box;
             font-family: David;
         }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(122, 247, 158, 0.4);
+        }
+
+        .modal-content {
+            background-color: #f9f9f9; 
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            border-radius: 10px; 
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); 
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>Syber Law Bot</h1>
+        <h1>Cyber Law Bot</h1>
     </header>
 
     <main>
@@ -64,7 +99,12 @@
                     <!--display user answer-->
             </div>
         </section>
-
+        <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Custom Alert Message Here</p>
+        </div>
+        </div>
 
     </main>
 
@@ -79,6 +119,18 @@
             console.log("Plaintiff:", isPlaintiff);
             console.log("Defendant:", isDefendant);
         });  
+
+        var modal = document.getElementById("myModal");
+        var span = document.getElementsByClassName("close")[0];
+
+        span.onclick = function() {
+        modal.style.display = "none";
+        }
+        function showAlert() {
+        modal.style.display = "block";
+        }
+        // Call showAlert function to display the modal
+        showAlert();
     </script>
     <script src="./assets/js/script.js"></script>  
 </body>
