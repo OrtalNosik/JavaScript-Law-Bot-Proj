@@ -18,41 +18,6 @@
             box-sizing: border-box;
             font-family: David;
         }
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(122, 247, 158, 0.4);
-        }
-
-        .modal-content {
-            background-color: #f9f9f9; 
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            border-radius: 10px; 
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); 
-        }
-
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
     </style>
 </head>
 <body>
@@ -99,39 +64,26 @@
                     <!--display user answer-->
             </div>
         </section>
-        <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <p>Custom Alert Message Here</p>
-        </div>
-        </div>
-
-    </main>
-
-    <script>
-        // JavaScript to handle user input
-        document.getElementById("start").addEventListener("click", function() {
-            var username = document.getElementById("username").value;
-            var isPlaintiff = document.getElementById("plaintiff").checked;
-            var isDefendant = document.getElementById("defendant").checked;
-
-            console.log("Username:", username);
-            console.log("Plaintiff:", isPlaintiff);
-            console.log("Defendant:", isDefendant);
-        });  
-
-        var modal = document.getElementById("myModal");
-        var span = document.getElementsByClassName("close")[0];
-
-        span.onclick = function() {
-        modal.style.display = "none";
-        }
-        function showAlert() {
-        modal.style.display = "block";
-        }
-        // Call showAlert function to display the modal
-        showAlert();
-    </script>
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close"></span>
+                    <p id="alertText"></p>
+                </div>
+            </div>
+        </main>
+        
+        <script>
+            // JavaScript to handle user input
+            document.getElementById("start").addEventListener("click", function() {
+                var username = document.getElementById("username").value;
+                var isPlaintiff = document.getElementById("plaintiff").checked;
+                var isDefendant = document.getElementById("defendant").checked;
+        
+                console.log("Username:", username);
+                console.log("Plaintiff:", isPlaintiff);
+                console.log("Defendant:", isDefendant);
+            });
+        </script>
     <script src="./assets/js/script.js"></script>  
 </body>
 </html>

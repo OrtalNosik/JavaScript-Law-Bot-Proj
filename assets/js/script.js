@@ -1,7 +1,4 @@
 //page elemnts
-//timer
-var timerEl = document.querySelector("#timer");
-var timeLeft = 80;
 
 //intro screen
 var introEl = document.querySelector("#intro");
@@ -25,7 +22,7 @@ var userAnswer
 var firstFlagChoice=true;
 
 
-var timerInterval; //declared here so i can stop it later in stopTimer()
+//var timerInterval; //declared here so i can stop it later in stopTimer()
 var currentQuestions;
 
 var questions = [ 
@@ -36,7 +33,7 @@ var questions = [
         }
 ];
 
-var lashonHaraQuestions = [ 
+var spamQuestions = [ {},
     {
         question: "האם מדובר באחד מהדברים הבאים: (דבר פרסומת) ",
         answers: ["מסר המופץ באופן מסחרי, במטרה לעודד רכישת מוצר, שירות, הוצאת כספים בדרך אחרת, בקשת תרומה או תעמולה.",
@@ -66,18 +63,23 @@ var lashonHaraQuestions = [
         correctAnswer: "כן נתתי"
     },
     {
-        question:"מטרת הפרסום" ,
-        answers: ["הפרסום הוא בנושא עמותות","הפרסום הוא בנושא תרומות"," הפרסום הוא בנושא בחירות או פרסומים של המדינה","עידוד הוצאות כספים"],
+        question:"האם הפנייה הייתה דרך אחד מהגורמים הבאים ",
+        answers: ["פנייה ממפרסם שבה הצעה להסכים לקבל דברי פרסומת שכוללים בקשות לקבלת תרומה או תעמולה","פנייה ממפרסם שבה הצעה להסכים לקבל מסרים שיווקיים","לא","פנייה בדרך אחרת"],
         correctAnswer: "כן נתתי"
     },
     {
         question:"האם סירבת לקבל פרסום" ,
         answers: ["כן סירבתי","לא סירבתי","לא יודע","אולי"],
         correctAnswer: "כן סירבתי"
+    },
+    {
+        question:"מטרת הפרסום" ,
+        answers: ["הפרסום הוא בנושא עמותות","הפרסום הוא בנושא תרומות"," הפרסום הוא בנושא בחירות או פרסומים של המדינה","עידוד הוצאות כספים"],
+        correctAnswer: "כן נתתי"
     }
  ];
 
-var spamQuestions = [
+var lashonHaraQuestions = [ {},
     {
         question:"אמצעי הפרסום, כיצד הפגיעה קרתה " ,
         answers: ["אינטרנט","פנים מול פנים","מקום ציבורי","מקום פרטי"],
@@ -85,8 +87,8 @@ var spamQuestions = [
     },
     {
         question:"מהות הפרסום? תיאור אירוע שקרה" ,
-        answers: ["לבזות אדם בנושא התנהגותו ", "פגיעה במשלוח יד","השפלת אדם בעיני הבריאות","אף אחד מהנל"],
-        correctAnswer: "אף אחד מהנל"
+        answers: ["לבזות אדם בנושא התנהגותו ", "פגיעה במשלוח יד","השפלת אדם בעיני הבריאות","אף אחד ממהויות אלו"],
+        correctAnswer: "אף אחד ממהויות אלו"
     },
     {
         question: "האם הדבר פורסם",
@@ -99,13 +101,13 @@ var spamQuestions = [
         correctAnswer: "כן ישנו"
     },
     {
-        question: " האם הכרת את הפוגע לפני",
-        answers: ["כן הכרתי", "לא הכרתי","לא יודע","אולי"],
-        correctAnswer: "כן הכרתי"
+        question:" האם זה נעשה בתום לב",
+        answers: ["נעשה בתום לב ", "לא ","לא יודע","אולי"],
+        correctAnswer: "לא "
     },
     {
-        question:" האם זה נעשה בתום לב",
-        answers: ["כן ", "לא ","לא יודע","אולי"],
+        question:" האם דובר דבר אמת",
+        answers: ["דובר דבר אמת ", "לא ","לא יודע","אולי"],
         correctAnswer: "לא "
     },
     {
@@ -115,7 +117,7 @@ var spamQuestions = [
     },
     {
         question:"האם מדובר ב",
-        answers: [" פרסומים של הכנסת וחבריה  הממשלה ושריה", "לא מבקר המדינה"," צדדים בהליך משפטי","אף אחד מהנל"],
+        answers: [" פרסומים של הכנסת וחבריה הממשלה ושריה", "מבקר המדינה"," צדדים בהליך משפטי","אף אחד מהנל"],
         correctAnswer: "אף אחד מהנל"
     },
     {
@@ -130,7 +132,7 @@ var spamQuestions = [
     }
  ];
 
- var webQuestions = [        
+ var webQuestions = [{},
     {
     question:" האם  קיים באתר תקנון אתר ומדיניות פרטיות",
     answers: ["כן ", "לא ","לא יודע","אולי"],
@@ -163,10 +165,10 @@ var spamQuestions = [
     }
     ];
 
- var camputerQuestions = [
+ var camputerQuestions = [{},
     {
-        question:" האם התובע הוא",
-        answers: ["הפרעה לשימוש במחשב או בחומר מחשב/נגיף מחשב","עבירות מרמה באמצעות מחשב","חדירה לחומר מחשב שלא כדין","חדירה לחומר מחשב כדי לעבור על עבירה אחרת","לא בוצע אף אחד מהנל"],
+        question:" האם בוצעה אחת מהעוולות האלו",
+        answers: ["הפרעה לשימוש במחשב או בחומר מחשב/נגיף מחשב","עבירות מרמה באמצעות מחשב","כדי לעבור על עבירה אחרת/חדירה לחומר מחשב שלא כדין","לא בוצע אף אחד מהנל"],
         correctAnswer: "אף אחד מהנל התובע"
     },        
     {
@@ -223,19 +225,7 @@ function startQuiz() {
     introEl.style.display = "none"; //removes intro screen and start button
     questionsEl.style.display = "block" // reveals the questions html
 
-    secondsLeft = 180; //starting time when quiz start
-
-         timerInterval = setInterval(function() {
-            secondsLeft--;
-            timerEl.textContent = "Time: " + secondsLeft + "s";
-            
-            if (secondsLeft === 0) {
-                clearInterval(timerInterval);
-                UserHighScore();
-            }
-        },1000);
-
-        displayQuestions(quizQuestions) //displays questions after timer begins
+    displayQuestions(quizQuestions) //displays questions after timer begins
 }
 
 ///////////////////////function for displaying the questions to tha page////////////
@@ -249,15 +239,16 @@ function displayQuestions() {
         currentQuestions = webQuestions;
     } else if (userAnswer === "עברות מחשבים") {
         currentQuestions = camputerQuestions;
-    } else if(firstFlagChoice){
+    } else if (firstFlagChoice) {
         currentQuestions = questions;
-        firstFlagChoice=false;
+        firstFlagChoice = false;
     }
 
     // Check if there are no more questions in the current set
     if (quizQuestions >= currentQuestions.length) {
         console.log(currentQuestions[quizQuestions]);
-        UserHighScore();
+        resetPage();
+        alert(username.value + " אנו מתנצלים הבוט אינו מצא תשובה החלטית גש לייעוץ מקצועי, הינך מוחזר לעמוד הראשי להנות משירותי הבוט מחדש במידת הצורך יום טוב ");
     } else {
         questionEl.textContent = currentQuestions[quizQuestions].question;
         asw1Btn.textContent = currentQuestions[quizQuestions].answers[0];
@@ -303,52 +294,47 @@ function checkAnswer(event) {
    var p = document.createElement("p");
    correctWrong.appendChild(p);
 
-   setTimeout(function () {
-    p.style.display = 'none';
-   }, 1300);
-
-    if (secondsLeft < 0) {
-        secondsLeft === 0;
-    }
     
     if (quizQuestions < currentQuestions.length+1) {
         quizQuestions++;
     }
     else{
-        alert(username.value + " אנו מתנצלים הבוט אינו מצא תשובה החלטית גש לייעוץ מקצועי, הינך מוחזר לעמוד הראשי להנות משירותי הבוט מחדש במידת הצורך יום טוב ");
         resetPage();
+        alert(username.value + " אנו מתנצלים הבוט אינו מצא תשובה החלטית גש לייעוץ מקצועי, הינך מוחזר לעמוד הראשי להנות משירותי הבוט מחדש במידת הצורך יום טוב ");
     }
     setTimeout(displayQuestions, 1000); //adds 1s between questions so user can see right or wrong
     
-   var yesAnswers = ["כן סירבתי", "עידוד הוצאות כספים", "מעל 20", "10-20", "2-10", "לבזות אדם בנושא התנהגותו ",
-   "פגיעה במשלוח יד", "השפלת אדם בעיני הבריאות", "כן פורסם", "1 ויותר ", "10+",
+   var yesAnswers = ["כן סירבתי", "עידוד הוצאות כספים", "מעל 20", "10-20", "2-10",
+    "1 ויותר ", "10+",
    "גוף פרטי הפועל למטרות רווח", "רשויות ציבוריות, כגון משרד ממשלתי או רשות מקומית ", "גוף הפועל שלא למטרות רווח, כגון עמותה המספקת שירות לציבור",
    "ארגון העוסק בקידום זכויותיהם של בעלי מוגבלויות ", "הנציבות ", "אדם עם מוגבלות ",
    "מחליף כל רבעון ", "מוצפן", " גניבת פרטים אישיים (תמונות וכו)/ פרטי תשלום (גניבת כרטיס אשראי)  ",
-   " פגיעה כך שהמחשב מתפקד בצורה לא תקינה(שיבוש פעולת מחשב או הפרעה למערכת מחשב", " התחזות לבן אדם אחר על ידי מחשב/קבלת דבר במרמה"
+   " פגיעה כך שהמחשב מתפקד בצורה לא תקינה(שיבוש פעולת מחשב או הפרעה למערכת מחשב", " התחזות לבן אדם אחר על ידי מחשב/קבלת דבר במרמה",
+   "הפרעה לשימוש במחשב או בחומר מחשב/נגיף מחשב","עבירות מרמה באמצעות מחשב","חדירה לחומר מחשב שלא כדין","חדירה לחומר מחשב כדי לעבור על עבירה אחרת"
     ];
-    var noAnswers = ["משלוח מסרים מאת המדינה", " מוסדותיה או גופים אחרים ששר התקשורת אישר ", "דרך הפצה אחרת",
+    var noAnswers = ["משלוח מסרים מאת המדינה", " מוסדותיה או גופים אחרים ששר התקשורת אישר ", "דרך הפצה אחרת","אף אחד ממהויות אלו",
     "כן נתתי", "הפרסום הוא בנושא עמותות", "הפרסום הוא בנושא תרומות",
     " הפרסום הוא בנושא בחירות או פרסומים של המדינה", "כן יש עניין",
-    " פרסומים של הכנסת וחבריה  הממשלה ושריה", " מבקר המדינה", " צדדים בהליך משפטי",
+    " פרסומים של הכנסת וחבריה  הממשלה ושריה", "מבקר המדינה", " צדדים בהליך משפטי",
     "המפרסם היה משכנע באמיתות דבריו", " המפרסם התנצל/המפרסם לא התכוון לנפגע", "האם לדעתך היה חזרה על מה שנאמר ", "תיקן או הכחיש הדבר",
-    "אף אחד ", "אדם 1 ", "אף אחד מהנל התובע", "אף אחד מהנל הנתבע ", "לא בוצע אף אחד מהנל", "כן נצפה",
-    " מונח מתחת למקלדת", "במקום גלוי", "אף אחד מהמדובר"
+    "אף אחד ", "אדם 1 ", "אף אחד מהנל התובע", "אף אחד מהנל הנתבע ", "כן נצפה",
+    " מונח מתחת למקלדת", "במקום גלוי", "אף אחד מהמדובר","פנייה ממפרסם שבה הצעה להסכים לקבל דברי פרסומת שכוללים בקשות לקבלת תרומה או תעמולה","פנייה ממפרסם שבה הצעה להסכים לקבל מסרים שיווקיים",
+    "לא פורסם","נעשה בתום לב ","דובר דבר אמת "
     ];
+    
 
     // Check if the selected answer triggers an alert
     if (yesAnswers.includes(userAnswer)) {
-    alert(username.value + " יש עילה לתביעה! הינך מוחזר לעמוד הראשי להנות משירותי הבוט מחדש במידת הצורך יום טוב ");
-    resetPage();
+        resetPage();
+        showAlert("Custom Alert Message 1");
+        alert(username.value + " יש עילה לתביעה! הינך מוחזר לעמוד הראשי להנות משירותי הבוט מחדש במידת הצורך יום טוב ");
+        showAlert(username.value + " יש עילה לתביעה! הינך מוחזר לעמוד הראשי להנות משירותי הבוט מחדש במידת הצורך יום טוב ");
     } else if (noAnswers.includes(userAnswer)) {
-    alert(username.value + " נראה כי אין עילה לתביעה, הינך מוחזר לעמוד הראשי להנות משירותי הבוט מחדש במידת הצורך יום טוב ");
-    resetPage();
+        resetPage();
+        alert(username.value + " נראה כי אין עילה לתביעה, הינך מוחזר לעמוד הראשי להנות משירותי הבוט מחדש במידת הצורך יום טוב ");
+        showAlert(username.value + " נראה כי אין עילה לתביעה, הינך מוחזר לעמוד הראשי להנות משירותי הבוט מחדש במידת הצורך יום טוב ");
     }
     
-}
-
-function stopTimer() {
-    clearInterval(timerInterval); 
 }
 
 //////////////////////////event listeners//////////////////////
