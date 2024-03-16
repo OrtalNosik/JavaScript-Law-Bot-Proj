@@ -326,13 +326,10 @@ function checkAnswer(event) {
     // Check if the selected answer triggers an alert
     if (yesAnswers.includes(userAnswer)) {
         resetPage();
-        showAlert("Custom Alert Message 1");
         alert(username.value + " יש עילה לתביעה! הינך מוחזר לעמוד הראשי להנות משירותי הבוט מחדש במידת הצורך יום טוב ");
-        showAlert(username.value + " יש עילה לתביעה! הינך מוחזר לעמוד הראשי להנות משירותי הבוט מחדש במידת הצורך יום טוב ");
     } else if (noAnswers.includes(userAnswer)) {
         resetPage();
         alert(username.value + " נראה כי אין עילה לתביעה, הינך מוחזר לעמוד הראשי להנות משירותי הבוט מחדש במידת הצורך יום טוב ");
-        showAlert(username.value + " נראה כי אין עילה לתביעה, הינך מוחזר לעמוד הראשי להנות משירותי הבוט מחדש במידת הצורך יום טוב ");
     }
     
 }
