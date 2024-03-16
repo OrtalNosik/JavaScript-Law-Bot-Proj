@@ -30,8 +30,7 @@ This is a quiz application designed to assess whether there are potential ground
   
 ## Screens UI
 
-![צילום מסך 2024-03-15 140511](https://github.com/OrtalNosik/JavaScript-Law-Bot-Proj/assets/93153515/b553592a-0749-4237-8dee-2bf187808248)
-![צילום מסך 2024-03-15 140522](https://github.com/OrtalNosik/JavaScript-Law-Bot-Proj/assets/93153515/5f6d9077-4d5d-4638-b14e-7a9a49a1679c)
-![צילום מסך 2024-03-15 140535](https://github.com/OrtalNosik/JavaScript-Law-Bot-Proj/assets/93153515/841553c8-2da3-4125-8b45-8acc731d3b30)
-
+![image](https://github.com/OrtalNosik/JavaScript-Law-Bot-Proj/assets/93153515/98b51d0b-e8ca-4402-945c-1520b478bf2c)
+![image](https://github.com/OrtalNosik/JavaScript-Law-Bot-Proj/assets/93153515/7d30c0af-d249-40ad-afc4-4248b809430f)
+![image](https://github.com/OrtalNosik/JavaScript-Law-Bot-Proj/assets/93153515/94949a9a-3464-4d79-a0bc-a4b1b707327c)
 
