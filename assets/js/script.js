@@ -172,8 +172,8 @@ var camputerQuestions = [{},
     correctAnswer: "אף אחד מהנל התובע"
 },
 {
-    question: "האם נדאג להגן/לאבטח מראש את המחשב? -מומלץ מאוד לאבטח את המחשב",
-    answers: ["כן ", "לא ", "לא יודע", "אולי"],
+    question: "האם דאגת להגן/לאבטח מראש את המחשב? -מומלץ מאוד לאבטח את המחשב",
+    answers: ["כן ", "לא הגנתי/אבטחתי ", "לא יודע", "אולי"],
     correctAnswer: "לא "
 },
 {
@@ -326,10 +326,10 @@ function checkAnswer(event) {
     // Check if the selected answer triggers an alert
     if (yesAnswers.includes(userAnswer)) {
         resetPage();
-        alert(username.value + "עבור בחירתך: " + userAnswer + " יש עילה לתביעה! הינך מוחזר לעמוד הראשי להנות משירותי הבוט");
+        alert(username.value + " עבור בחירתך: " + userAnswer + " יש עילה לתביעה! הינך מוחזר לעמוד הראשי להנות משירותי הבוט");
     } else if (noAnswers.includes(userAnswer)) {
         resetPage();
-        alert(username.value + "עבור בחירתך: " + userAnswer + " נראה כי אין עילה לתביעה, הינך מוחזר לעמוד הראשי להנות משירותי הבוט ");
+        alert(username.value + " עבור בחירתך: " + userAnswer + " נראה כי אין עילה לתביעה, הינך מוחזר לעמוד הראשי להנות משירותי הבוט ");
     }
     else if (userAnswer === "כן,מסר את מחשבו ") {
         resetPage();
@@ -351,7 +351,9 @@ function checkAnswer(event) {
         alert("יש לך אשם תורם שביצעת את החובה שחלה עליך ואפשרת את חשיפת המידע שלך");
         alert(username.value + " נראה כי אין עילה לתביעה, הינך מוחזר לעמוד הראשי להנות משירותי הבוט ");
     }
-
+    else if (userAnswer === "לא הגנתי/אבטחתי ") {
+        alert("מומלץ מאוד לאבטח את המחשב");
+    }
 
 }
 
