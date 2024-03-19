@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,7 +36,7 @@
             </p>
          <!-- Add user input section -->
         <section id="user-input" class="user-input">
-            <input type="text" id="username" name="username" placeholder="הכנס את שמך בבקשה"><br>
+            <input type="text" id="username" name="username" style="direction: rtl;" placeholder="הכנס את שמך בבקשה"><br>
             <label for="plaintiff">תובע</label>
             <input type="radio" id="plaintiff" name="plaintiff"><br>
             <label for="defendant" >נתבע</label>
@@ -76,8 +77,8 @@
             // JavaScript to handle user input
             document.getElementById("start").addEventListener("click", function() {
                 var username = document.getElementById("username").value;
-                var isPlaintiff = document.getElementById("plaintiff").checked;
-                var isDefendant = document.getElementById("defendant").checked;
+                var isPlaintiff = document.getElementById("plaintiff").checked; //תובע
+                var isDefendant = document.getElementById("defendant").checked; //נתבע
         
                 console.log("Username:", username);
                 console.log("Plaintiff:", isPlaintiff);
