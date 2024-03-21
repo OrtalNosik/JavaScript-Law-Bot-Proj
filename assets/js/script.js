@@ -11,6 +11,8 @@ var asw3Btn = document.querySelector("#asw3");
 var asw4Btn = document.querySelector("#asw4");
 // Get the "חזור לראשית" button element
 var goBackBtn = document.querySelector("#go-back");
+// Get the " חזור שאלה" button element
+var stepBackBtn = document.querySelector("#step-back");
 
 document.getElementById("start").addEventListener("click", function () {
     var username = document.getElementById("username").value;
@@ -21,41 +23,20 @@ document.getElementById("start").addEventListener("click", function () {
     console.log("Defendant:", isDefendant);
   });
 
+// question index counter
+var quizQuestions = 0; //num of qa
+var userAnswer; //בחירת המשתמש
+var userAnswerArrey = [];
+var firstFlagChoice = true;
+var currentQuestions;
+var topic; //נושא
+
 // Get references to the label elements
 const plaintiffDisplay = document.getElementById('plaintiff-display');
 const usernameDisplayStatus = document.getElementById('username-display-status');
 const userChoiceDisplay = document.getElementById('user-choice-display');
 const questionNumberDisplay = document.getElementById('question-number-display');
-
-// Function to update the labels
-function updateStatusLabels() {
-  // Get the username from the input field
-  const username = document.getElementById('username').value;
-
-  // Check if the user is a plaintiff or defendant
-  const isPlaintiff = document.getElementById('plaintiff').checked;
-  const isDefendant = document.getElementById('defendant').checked;
-
-  // Update the plaintiff/defendant label
-  if (isPlaintiff) {
-    plaintiffDisplay.textContent = 'תובע';
-  } else if (isDefendant) {
-    plaintiffDisplay.textContent = 'נתבע';
-  } else {
-    plaintiffDisplay.textContent = '';
-  }
-
-  // Update the username label
-  usernameDisplayStatus.textContent = `שם המשתמש: ${username}`;
-
-  // Update the user choice label
-  userChoiceDisplay.textContent = `בחירה אחרונה: ${userAnswer || ''}`;
-
-  // Update the question number label
-  questionNumberDisplay.textContent = `מספר השאלה: ${quizQuestions + 1}`;
-
-  questionNumberDisplay.textContent =` מתוך: ${currentQuestions.length}`;
-}
+const sumOfQuestion = document.getElementById('sum-of-question');
 
 // Call the updateStatusLabels function when the start button is clicked
 document.getElementById('start').addEventListener('click', updateStatusLabels);
@@ -72,16 +53,11 @@ var questionsEl = document.querySelector("#questions");
 var questionEl = document.querySelector("#question");
 // for div providing feedback if answer is right/wrong
 var correctWrong = document.querySelector("#correct-wrong");
-// question index counter
-var quizQuestions = 0;
-var userAnswer;
-var firstFlagChoice = true;
 
-var currentQuestions;
 
 var questions = [
     {
-        question: " מה העוולה(בחר נושא)",
+        question: " מה העוולה(בחר נושא) בהתאם לבחירתך יוצגו שאלות מתאימות",
         answers: ["ספאם", "לשון הרע", "הנגשת אתרים", "עברות מחשבים"],
         correctAnswer: "ספאם"
     }
@@ -90,9 +66,9 @@ var questions = [
 var spamQuestions = [{},
 {
     question: " ?האם מדובר באחד מהדברים הבאים: (דבר פרסומת) ",
-    answers: ["מסר המופץ באופן מסחרי, במטרה לעודד רכישת מוצר, שירות, הוצאת כספים בדרך אחרת, בקשת תרומה או תעמולה.",
-        "מסר המופץ לציבור הרחב (בדרך כלל מסר חלקי), שיש בו הצעה לנמען להתקשר למספר מסוים כדי לקבל מידע, שירות או מסר כלשהו.",
-        "חיוג לנמען באמצעות מערכת חיוג אוטומטי, כאשר החיוג מופסק לפני שהנמען עונה  ובחזרה למספר הטלפון מושמע דבר פרסומת."
+    answers: ["מסר המופץ באופן מסחרי, במטרה לעודד רכישת מוצר, שירות, הוצאת כספים בדרך אחרת, בקשת תרומה או תעמולה",
+        "מסר המופץ לציבור הרחב (בדרך כלל מסר חלקי), שיש בו הצעה לנמען להתקשר למספר מסוים כדי לקבל מידע, שירות או מסר כלשהו",
+        "חיוג לנמען באמצעות מערכת חיוג אוטומטי, כאשר החיוג מופסק לפני שהנמען עונה  ובחזרה למספר הטלפון מושמע דבר פרסומת"
         , "אף אחד מהנל"],
     correctAnswer: "אף אחד מהנל"
 },
@@ -103,7 +79,7 @@ var spamQuestions = [{},
 },
 {
     question: " ?איך ההודעה נשלחה ",
-    answers: ["פקס", "הודעת SMS/הודעת דואר אלקטרוני", "מערכת חיוג אוטומטי ", "דרך הפצה אחרת"],
+    answers: ["פקס", " SMSהודעת /הודעת דואר אלקטרוני", "מערכת חיוג אוטומטי ", "דרך הפצה אחרת"],
     correctAnswer: "דרך הפצה אחרת"
 },
 {
@@ -282,17 +258,55 @@ function startQuiz() {
     displayQuestions(quizQuestions) //displays questions after timer begins
 }
 
+///////////////////////Function to update the labels///////////////////////
+function updateStatusLabels() {
+    userAnswer = event.target.textContent; // Update userAnswer
+    //let size = userAnswerArrey.length;
+    const username = document.getElementById('username').value;
+    // Check if the user is a plaintiff or defendant
+    const isPlaintiff = document.getElementById('plaintiff').checked;
+    const isDefendant = document.getElementById('defendant').checked;
+    usernameDisplayStatus.textContent = `שלום ${username}`;
+    if (isPlaintiff) {
+        plaintiffDisplay.textContent = 'בתור תובע';
+    } else if (isDefendant) {
+        plaintiffDisplay.textContent = 'בתור נתבע';
+    } else {
+        plaintiffDisplay.textContent = '';
+    }
+    if (topic != null) {
+        plaintiffDisplay.textContent = `בנושא ${topic}`;
+    }
+    if (userAnswer != null && userAnswer !="!התחל"){
+
+        userChoiceDisplay.textContent = `בהמשך לבחירתך האחרונה: ${userAnswer}`;
+    }
+    // Update the question number display
+    if (userAnswerArrey.length === 0) {
+        questionNumberDisplay.textContent = `הנך במספר שאלה: 1`;
+    } else {
+        questionNumberDisplay.textContent = `הנך במספר שאלה: ${quizQuestions}`;
+    }
+    sumOfQuestion.textContent =` מתוך: ${currentQuestions.length}`;
+}
+
+
 ///////////////////////function for displaying the questions to tha page////////////
 function displayQuestions() {
+    console.log(userAnswerArrey);
     // Determine which set of questions to display based on user's choice
     if (userAnswer === "לשון הרע") {
         currentQuestions = lashonHaraQuestions;
+        topic = userAnswer;
     } else if (userAnswer === "ספאם") {
         currentQuestions = spamQuestions;
+        topic = userAnswer;
     } else if (userAnswer === "הנגשת אתרים") {
         currentQuestions = webQuestions;
+        topic = userAnswer;
     } else if (userAnswer === "עברות מחשבים") {
         currentQuestions = camputerQuestions;
+        topic = userAnswer;
     } else if (firstFlagChoice) {
         currentQuestions = questions;
         firstFlagChoice = false;
@@ -300,7 +314,6 @@ function displayQuestions() {
 
     // Check if there are no more questions in the current set
     if (quizQuestions >= currentQuestions.length) {
-        console.log(currentQuestions[quizQuestions]);
         resetPage();
         alert(username.value + " אנו מתנצלים הבוט אינו מצא תשובה החלטית. אנא גש לייעוץ מקצועי, הינך מוחזר לעמוד הראשי בכדי להנות משירותי הבוט מחדש. יום טוב ");
     } else {
@@ -334,14 +347,15 @@ function resetPage() {
     // Hide the question section and display the intro screen
     questionsEl.style.display = "none";
     introEl.style.display = "block";
+    quizQuestions = 0; // Reset quizQuestions to 0
     location.reload();
 }
 
 ////check if answer is correct
 function checkAnswer(event) {
-
-    userAnswer = event.target.textContent
-    console.log(userAnswer);
+    if(userAnswer!="ספאם" && userAnswer!="עברות מחשבים" && userAnswer!="הנגשת אתרים" && userAnswer!="לשון הרע"){
+        userAnswerArrey.push(userAnswer);
+    }
     event.preventDefault();
 
     correctWrong.style.display = "block";  //displayed user notif div and appands a <p> to it
@@ -349,9 +363,12 @@ function checkAnswer(event) {
     correctWrong.appendChild(p);
 
 
-    if (quizQuestions < currentQuestions.length + 1) {
+    if (quizQuestions < currentQuestions.length + 1 && userAnswer != "חזור") {
         quizQuestions++;
     }
+    // else if(userAnswer == "חזור"){
+    //     userAnswer = userAnswerArrey[quizQuestions-1];
+    // }
     else {
         resetPage();
         alert(username.value + " אנו מתנצלים הבוט אינו מצא תשובה החלטית\nגש לייעוץ מקצועי, הינך מוחזר לעמוד הראשי להנות משירותי הבוט מחדש במידת הצורך\nיום טוב ");
@@ -375,7 +392,6 @@ function checkAnswer(event) {
         "פנייה ממפרסם שבה הצעה להסכים לקבל דברי פרסומת שכוללים בקשות לקבלת תרומה או תעמולה", "פנייה ממפרסם שבה הצעה להסכים לקבל מסרים שיווקיים",
         "לא פורסם", "נעשה בתום לב ", "דובר דבר אמת "
     ];
-
 
     // Check if the selected answer triggers an alert
     if (yesAnswers.includes(userAnswer)) {
@@ -421,4 +437,13 @@ goBackBtn.addEventListener("click", function() {
     userAnswer = "";
     correctWrong.innerHTML = ""; // Clear the correct-wrong div
     displayQuestions(); // Display the initial question
+});
+stepBackBtn.addEventListener("click", function() {
+    // go back one question
+    userAnswerArrey.pop();
+    if (quizQuestions > 0) {
+        quizQuestions--;
+        updateStatusLabels();
+        displayQuestions(); // Display the previous question
+    }
 });

@@ -42,14 +42,16 @@
           <input type="radio" id="defendant" name="plaintiff" />
         </section>
         <button id="start" type="button">!התחל</button>
-        <button id="resetBtn" type="button" style="display: none;">התחל מההתחלה</button>
+        <!-- <button id="resetBtn" type="button" style="display: none;">התחל מההתחלה</button> -->
       </section>
       <section id="questions" class="questions">
-        <div id="user-info">
-          <span id="username-display"></span>
-          <span id="question-number"></span>
-          <span id="user-answer"></span>
-        </div>
+        <section id="status" class="status">
+            <h3 id="username-display-status"></h3> <br>
+            <h3 id="plaintiff-display"></h3>    <br>
+            <h3 id="user-choice-display"></h3> <br>
+            <h3 id="question-number-display"></h3> <br>
+            <h3 id="sum-of-question"></h3> <br>
+        </section>
         <h2 id="question">Question goes here</h2>
         <ul>
           <li><button id="asw1" type="button" class="btn">answer1</button></li>
@@ -60,14 +62,8 @@
         <div id="correct-wrong">
           <!--display user answer-->
         </div>
-        <section id="status" class="status">
-          <label id="plaintiff-display"></label>
-          <label id="username-display-status"></label>
-          <label id="user-choice-display"></label>
-          <label id="question-number-display"></label>
-          <label id="sum-of-question"></label>
-        </section>
         <button id="go-back" type="button">חזור לראשית</button>
+        <button id="step-back" type="button">חזור</button>
       </section>
       <div id="myModal" class="modal">
         <div class="modal-content">
@@ -76,7 +72,7 @@
         </div>
       </div>
     </main>
-    <script>
+    <!-- <script>
       // JavaScript to handle user input
       document.getElementById("start").addEventListener("click", function () {
         var username = document.getElementById("username").value;
@@ -86,7 +82,7 @@
         console.log("Plaintiff:", isPlaintiff);
         console.log("Defendant:", isDefendant);
       });
-    </script>
+    </script> -->
     <script src="./assets/js/script.js"></script>
   </body>
 </html>
