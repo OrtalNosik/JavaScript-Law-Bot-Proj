@@ -9,6 +9,62 @@ var asw1Btn = document.querySelector("#asw1");
 var asw2Btn = document.querySelector("#asw2");
 var asw3Btn = document.querySelector("#asw3");
 var asw4Btn = document.querySelector("#asw4");
+// Get the "חזור לראשית" button element
+var goBackBtn = document.querySelector("#go-back");
+
+document.getElementById("start").addEventListener("click", function () {
+    var username = document.getElementById("username").value;
+    var isPlaintiff = document.getElementById("plaintiff").checked; //תובע
+    var isDefendant = document.getElementById("defendant").checked; //נתבע
+    console.log("Username:", username);
+    console.log("Plaintiff:", isPlaintiff);
+    console.log("Defendant:", isDefendant);
+  });
+
+// Get references to the label elements
+const plaintiffDisplay = document.getElementById('plaintiff-display');
+const usernameDisplayStatus = document.getElementById('username-display-status');
+const userChoiceDisplay = document.getElementById('user-choice-display');
+const questionNumberDisplay = document.getElementById('question-number-display');
+
+// Function to update the labels
+function updateStatusLabels() {
+  // Get the username from the input field
+  const username = document.getElementById('username').value;
+
+  // Check if the user is a plaintiff or defendant
+  const isPlaintiff = document.getElementById('plaintiff').checked;
+  const isDefendant = document.getElementById('defendant').checked;
+
+  // Update the plaintiff/defendant label
+  if (isPlaintiff) {
+    plaintiffDisplay.textContent = 'תובע';
+  } else if (isDefendant) {
+    plaintiffDisplay.textContent = 'נתבע';
+  } else {
+    plaintiffDisplay.textContent = '';
+  }
+
+  // Update the username label
+  usernameDisplayStatus.textContent = `שם המשתמש: ${username}`;
+
+  // Update the user choice label
+  userChoiceDisplay.textContent = `בחירה אחרונה: ${userAnswer || ''}`;
+
+  // Update the question number label
+  questionNumberDisplay.textContent = `מספר השאלה: ${quizQuestions + 1}`;
+
+  questionNumberDisplay.textContent =` מתוך: ${currentQuestions.length}`;
+}
+
+// Call the updateStatusLabels function when the start button is clicked
+document.getElementById('start').addEventListener('click', updateStatusLabels);
+
+// Call the updateStatusLabels function when an answer button is clicked
+asw1Btn.addEventListener('click', updateStatusLabels);
+asw2Btn.addEventListener('click', updateStatusLabels);
+asw3Btn.addEventListener('click', updateStatusLabels);
+asw4Btn.addEventListener('click', updateStatusLabels);
 
 //q&a section
 var questionsEl = document.querySelector("#questions");
@@ -17,12 +73,10 @@ var questionEl = document.querySelector("#question");
 // for div providing feedback if answer is right/wrong
 var correctWrong = document.querySelector("#correct-wrong");
 // question index counter
-var quizQuestions = 0
-var userAnswer
+var quizQuestions = 0;
+var userAnswer;
 var firstFlagChoice = true;
 
-
-//var timerInterval; //declared here so i can stop it later in stopTimer()
 var currentQuestions;
 
 var questions = [
@@ -359,3 +413,12 @@ function checkAnswer(event) {
 
 //////////////////////////event listeners//////////////////////
 startBtn.addEventListener("click", startQuiz)
+goBackBtn.addEventListener("click", function() {
+    // Reset the quiz to the initial state
+    resetPage();
+    quizQuestions = 0;
+    firstFlagChoice = true;
+    userAnswer = "";
+    correctWrong.innerHTML = ""; // Clear the correct-wrong div
+    displayQuestions(); // Display the initial question
+});

@@ -1,90 +1,92 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cyber Law Bot</title>
-    <link rel="shortcut icon" type="image/jpg" href="./assets/images/favicon.ico"/>
-    <link rel="stylesheet" href="./assets/css/stylesheet.css">
-    <link rel="stylesheet" href="./assets/css/font.css">
+    <link rel="shortcut icon" type="image/jpg" href="./assets/images/favicon.ico" />
+    <link rel="stylesheet" href="./assets/css/stylesheet.css" />
+    <link rel="stylesheet" href="./assets/css/font.css" />
     <style>
-        #username {
-            padding: 5px;
-            margin: 5px 0;
-            border: 2px solid rgb(122, 247, 158);
-            font-size: 14px;
-            width: 80%;
-            box-sizing: border-box;
-            font-family: David;
-        }
+      #username {
+        padding: 5px;
+        margin: 5px 0;
+        border: 2px solid rgb(122, 247, 158);
+        font-size: 14px;
+        width: 80%;
+        box-sizing: border-box;
+        font-family: David;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <h1>Cyber Law Bot</h1>
+      <h1>Cyber Law Bot</h1>
     </header>
-
     <main>
-        <section id="intro" class="intro">
-            <h1>ברוך הבא לבוט האינטרנטי של דיני סייבר</h1>
-            <img src="./assets/images/law.png">
-            <p>,אתה מוזמן לענות על השאלות הבאות<br> 
-                .עבור כל שאלה המערכת שלנו תחשב אם יש עילה לתביעה או לא בהתאם לבחירותך<br> 
-                ?תחילה מה השם שלך
-            </p>
-         <!-- Add user input section -->
+      <section id="intro" class="intro">
+        <h1>ברוך הבא לבוט האינטרנטי של דיני סייבר</h1>
+        <img src="./assets/images/law.png" />
+        <p>
+          ,אתה מוזמן לענות על השאלות הבאות<br />
+          .עבור כל שאלה המערכת שלנו תחשב אם יש עילה לתביעה או לא בהתאם לבחירותך<br />
+          ?תחילה מה השם שלך
+        </p>
+        <!-- Add user input section -->
         <section id="user-input" class="user-input">
-            <input type="text" id="username" name="username" style="direction: rtl;" placeholder="הכנס את שמך בבקשה"><br>
-            <label for="plaintiff">תובע</label>
-            <input type="radio" id="plaintiff" name="plaintiff"><br>
-            <label for="defendant" >נתבע</label>
-            <input type="radio" id="defendant" name="plaintiff">
+          <input type="text" id="username" name="username" style="direction: rtl;" placeholder="הכנס את שמך בבקשה" /><br />
+          <label for="plaintiff">תובע</label>
+          <input type="radio" id="plaintiff" name="plaintiff" /><br />
+          <label for="defendant">נתבע</label>
+          <input type="radio" id="defendant" name="plaintiff" />
         </section>
-            <button id="start" type="button">!התחל</button>
+        <button id="start" type="button">!התחל</button>
+        <button id="resetBtn" type="button" style="display: none;">התחל מההתחלה</button>
+      </section>
+      <section id="questions" class="questions">
+        <div id="user-info">
+          <span id="username-display"></span>
+          <span id="question-number"></span>
+          <span id="user-answer"></span>
+        </div>
+        <h2 id="question">Question goes here</h2>
+        <ul>
+          <li><button id="asw1" type="button" class="btn">answer1</button></li>
+          <li><button id="asw2" type="button" class="btn">answer2</button></li>
+          <li><button id="asw3" type="button" class="btn">answer3</button></li>
+          <li><button id="asw4" type="button" class="btn">answer4</button></li>
+        </ul>
+        <div id="correct-wrong">
+          <!--display user answer-->
+        </div>
+        <section id="status" class="status">
+          <label id="plaintiff-display"></label>
+          <label id="username-display-status"></label>
+          <label id="user-choice-display"></label>
+          <label id="question-number-display"></label>
+          <label id="sum-of-question"></label>
         </section>
-
-        <section id="questions" class="questions">
-            <h2 id="question">Question goes here</h2>
-            <ul>
-                <li>
-                    <button id="asw1" type="button" class="btn">answer1</button>
-                </li>
-                <li>
-                    <button id="asw2" type="button" class="btn">answer2</button>
-                </li>
-                <li>
-                    <button id="asw3" type="button" class="btn">answer3</button>
-                </li>
-                <li>
-                    <button id="asw4" type="button" class="btn">answer4</button>
-                </li>
-            </ul>
-            <div id="correct-wrong">
-                    <!--display user answer-->
-            </div>
-        </section>
-            <div id="myModal" class="modal">
-                <div class="modal-content">
-                    <span class="close"></span>
-                    <p id="alertText"></p>
-                </div>
-            </div>
-        </main>
-        
-        <script>
-            // JavaScript to handle user input
-            document.getElementById("start").addEventListener("click", function() {
-                var username = document.getElementById("username").value;
-                var isPlaintiff = document.getElementById("plaintiff").checked; //תובע
-                var isDefendant = document.getElementById("defendant").checked; //נתבע
-        
-                console.log("Username:", username);
-                console.log("Plaintiff:", isPlaintiff);
-                console.log("Defendant:", isDefendant);
-            });
-        </script>
-    <script src="./assets/js/script.js"></script>  
-</body>
+        <button id="go-back" type="button">חזור לראשית</button>
+      </section>
+      <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="close"></span>
+          <p id="alertText"></p>
+        </div>
+      </div>
+    </main>
+    <script>
+      // JavaScript to handle user input
+      document.getElementById("start").addEventListener("click", function () {
+        var username = document.getElementById("username").value;
+        var isPlaintiff = document.getElementById("plaintiff").checked; //תובע
+        var isDefendant = document.getElementById("defendant").checked; //נתבע
+        console.log("Username:", username);
+        console.log("Plaintiff:", isPlaintiff);
+        console.log("Defendant:", isDefendant);
+      });
+    </script>
+    <script src="./assets/js/script.js"></script>
+  </body>
 </html>
