@@ -268,12 +268,13 @@ function updateStatusLabels() {
     const isDefendant = document.getElementById('defendant').checked;
     usernameDisplayStatus.textContent = `שלום ${username}`;
     if (isPlaintiff) {
-        plaintiffDisplay.textContent = 'בתור תובע';
+        var PlaintiffDisplay = 'בתור תובע';
     } else if (isDefendant) {
+        var PlaintiffDisplay ='בתור נתבע'
         plaintiffDisplay.textContent = 'בתור נתבע';
-    } else {
-        plaintiffDisplay.textContent = '';
-    }
+    } 
+    plaintiffDisplay.textContent = PlaintiffDisplay;
+
     if (topic != null) {
         plaintiffDisplay.textContent = `בנושא ${topic}`;
     }
@@ -288,6 +289,19 @@ function updateStatusLabels() {
         questionNumberDisplay.textContent = `הנך במספר שאלה: ${quizQuestions}`;
     }
     sumOfQuestion.textContent =` מתוך: ${currentQuestions.length}`;
+
+    /////////display the user history choice/////
+    var menuList = document.getElementById("menuContent");
+    // Clear any existing content in the menu
+    menuList.innerHTML = "";
+    // Populate the menu with the content of userAnswerArray
+    var index = 1;
+    userAnswerArrey.forEach(function (item) {
+        var li = document.createElement("li");
+        li.textContent = index + "." + item;
+        menuList.appendChild(li);
+        index++
+    });
 }
 
 
@@ -447,3 +461,19 @@ stepBackBtn.addEventListener("click", function() {
         displayQuestions(); // Display the previous question
     }
 });
+ // JavaScript to handle menu button click
+ document.getElementById("menuButton").addEventListener("click", function () {
+    var sideMenu = document.getElementById("sideMenu");
+    if (sideMenu.style.left === "0px") {
+      sideMenu.style.left = "-250px";
+    } else {
+      sideMenu.style.left = "0px";
+    }
+  });
+
+  // JavaScript to handle close button click
+  document.getElementById("closeButton").addEventListener("click", function () {
+    var sideMenu = document.getElementById("sideMenu");
+    sideMenu.style.left = "-250px";
+  });
+

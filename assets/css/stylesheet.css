@@ -195,3 +195,50 @@ header h1 {
 #end{
     display: none;  
   } 
+
+.sidemenu {
+width: 250px;
+position: fixed;
+top: 0;
+left: -250px;
+height: 100%;
+background-color: #f0f0f0;
+overflow-x: hidden;
+transition: 0.3s;
+padding-top: 60px;
+}
+
+.sidemenu a {
+padding: 10px;
+text-decoration: none;
+color: #000;
+display: block;
+transition: 0.3s;
+}
+
+.sidemenu a:hover {
+background-color: #ddd;
+}
+
+.sidemenu .title {
+font-size: 20px;
+font-weight: bold;
+padding: 10px;
+}
+.sidemenu .subtitle {
+    font-size: 15px;
+    font-weight: bold;
+    padding: 10px;
+    }
+.sidemenu .subsubtitle {
+    font-size: 15px;
+    padding: 10px;
+    }
+/* Close button style */
+.close-btn {
+position: absolute;
+top: 10px;
+right: 10px;
+cursor: pointer;
+color: #000;
+}

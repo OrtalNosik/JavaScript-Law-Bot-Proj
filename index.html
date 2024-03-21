@@ -22,67 +22,67 @@
   </head>
   <body>
     <header>
-      <h1>Cyber Law Bot</h1>
+        <!-- Side menu button -->
+        <button id="menuButton" class="intro">היסטוריית הצאט</button>
+        <!-- Side menu -->
+        <div class="sidemenu" id="sideMenu">
+            <span class="close-btn" id="closeButton">&times;</span> <!-- Close button -->
+            <div class="title">היסטוריית הצ'אט</div>
+            <h5 class="subtitle">כאן מוצג כל היסטוריית בחירותך במסגרת מסלול השאלות</h5>
+            <ul id="menuContent" class="subsubtitle">
+                <!-- Array content will be dynamically added here -->
+            </ul><br>
+        </div>
+        <h1 style="text-align: center;">Cyber Law Bot</h1>
     </header>
     <main>
-      <section id="intro" class="intro">
-        <h1>ברוך הבא לבוט האינטרנטי של דיני סייבר</h1>
-        <img src="./assets/images/law.png" />
-        <p>
-          ,אתה מוזמן לענות על השאלות הבאות<br />
-          .עבור כל שאלה המערכת שלנו תחשב אם יש עילה לתביעה או לא בהתאם לבחירותך<br />
-          ?תחילה מה השם שלך
-        </p>
-        <!-- Add user input section -->
-        <section id="user-input" class="user-input">
-          <input type="text" id="username" name="username" style="direction: rtl;" placeholder="הכנס את שמך בבקשה" /><br />
-          <label for="plaintiff">תובע</label>
-          <input type="radio" id="plaintiff" name="plaintiff" /><br />
-          <label for="defendant">נתבע</label>
-          <input type="radio" id="defendant" name="plaintiff" />
+        <section id="intro" class="intro">
+            <h1>ברוך הבא לבוט האינטרנטי של דיני סייבר</h1>
+            <img src="./assets/images/law.png" />
+            <p>
+            ,אתה מוזמן לענות על השאלות הבאות<br />
+            .עבור כל שאלה המערכת שלנו תחשב אם יש עילה לתביעה או לא בהתאם לבחירותך<br />
+            ?תחילה מה השם שלך
+            </p>
+            <!-- Add user input section -->
+            <section id="user-input" class="user-input">
+                <input type="text" id="username" name="username" style="direction: rtl;" placeholder="הכנס את שמך בבקשה" /><br />
+                <label for="plaintiff">תובע</label>
+                <input type="radio" id="plaintiff" name="plaintiff" /><br />
+                <label for="defendant">נתבע</label>
+                <input type="radio" id="defendant" name="plaintiff" />
+            </section>
+            <button id="start" type="button">!התחל</button>
+            <!-- <button id="resetBtn" type="button" style="display: none;">התחל מההתחלה</button> -->
         </section>
-        <button id="start" type="button">!התחל</button>
-        <!-- <button id="resetBtn" type="button" style="display: none;">התחל מההתחלה</button> -->
-      </section>
-      <section id="questions" class="questions">
-        <section id="status" class="status">
-            <h3 id="username-display-status"></h3> <br>
-            <h3 id="plaintiff-display"></h3>    <br>
-            <h3 id="user-choice-display"></h3> <br>
-            <h3 id="question-number-display"></h3> <br>
-            <h3 id="sum-of-question"></h3> <br>
+        <section id="questions" class="questions">
+            <section id="status" class="status">
+                <h3 id="username-display-status"></h3> <br>
+                <h3 id="plaintiff-display"></h3>    <br>
+                <h3 id="user-choice-display"></h3> <br>
+                <h3 id="question-number-display"></h3> <br>
+                <h3 id="sum-of-question"></h3> <br>
+            </section>
+            <h2 id="question">Question goes here</h2>
+            <ul>
+                <li><button id="asw1" type="button" class="btn">answer1</button></li>
+                <li><button id="asw2" type="button" class="btn">answer2</button></li>
+                <li><button id="asw3" type="button" class="btn">answer3</button></li>
+                <li><button id="asw4" type="button" class="btn">answer4</button></li>
+            </ul>
+            <div id="correct-wrong">
+                <!--display user answer-->
+            </div>
+            <button id="go-back" type="button">חזור לראשית</button>
+            <button id="step-back" type="button">חזור</button>
         </section>
-        <h2 id="question">Question goes here</h2>
-        <ul>
-          <li><button id="asw1" type="button" class="btn">answer1</button></li>
-          <li><button id="asw2" type="button" class="btn">answer2</button></li>
-          <li><button id="asw3" type="button" class="btn">answer3</button></li>
-          <li><button id="asw4" type="button" class="btn">answer4</button></li>
-        </ul>
-        <div id="correct-wrong">
-          <!--display user answer-->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close"></span>
+                <p id="alertText"></p>
+            </div>
         </div>
-        <button id="go-back" type="button">חזור לראשית</button>
-        <button id="step-back" type="button">חזור</button>
-      </section>
-      <div id="myModal" class="modal">
-        <div class="modal-content">
-          <span class="close"></span>
-          <p id="alertText"></p>
-        </div>
-      </div>
     </main>
-    <!-- <script>
-      // JavaScript to handle user input
-      document.getElementById("start").addEventListener("click", function () {
-        var username = document.getElementById("username").value;
-        var isPlaintiff = document.getElementById("plaintiff").checked; //תובע
-        var isDefendant = document.getElementById("defendant").checked; //נתבע
-        console.log("Username:", username);
-        console.log("Plaintiff:", isPlaintiff);
-        console.log("Defendant:", isDefendant);
-      });
-    </script> -->
     <script src="./assets/js/script.js"></script>
   </body>
 </html>
