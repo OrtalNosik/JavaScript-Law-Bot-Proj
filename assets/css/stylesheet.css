@@ -5,23 +5,62 @@
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    background-image: url('https://source.unsplash.com/random/1920x1080/?robot');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Courier New', Courier, monospace;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 header {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
     text-align: center;
-    display: flex;
-    justify-content: space-around;
-    background-color: rgb(122, 247, 158);
-    padding-top: 20px;
-    padding-bottom: 20px;
-    border-style: dashed;
-    border-top: 0px;
-    border-left: 0px;
-    border-right: 0px;
-    
-    
+}
 
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+}
+
+#intro, #questions {
+    text-align: center;
+}
+
+#username {
+    padding: 5px;
+    margin: 10px 0;
+    border: 2px solid #fff;
+    background-color: transparent;
+    color: #fff;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    width: 80%;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #8b4513;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 5px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #a0522d;
+}
+
+.btn {
+    background-color: #333;
 }
 
 header button {
@@ -40,7 +79,7 @@ header button:hover {
 header h1 {
     font-size: 50px;
     font-family: elliotsixregular;
-    text-shadow: 2px 2px rgb(191, 243, 206);
+    text-shadow: 2px 2px #de9573;
     
 }
 
@@ -76,7 +115,7 @@ header h1 {
 .intro button {
     font-size: xx-large;
     margin-top: 35px;
-    background-color: rgb(122, 247, 158);
+    background-color: #a0522d;
     padding: 15px;
     border-radius: 12px;
     cursor: crosshair;
@@ -84,43 +123,11 @@ header h1 {
 }
 
 .intro button:hover {
-    background-color: rgb(184, 251, 203);
+    background-color: #caa797;
     cursor: crosshair;
 }
                                                            /*quiz buttons*/
-.btn {
-    font-size: large;
-    background-color: rgb(122, 247, 158);
-    padding: 7px;
-    border-radius: 12px;
-    cursor: crosshair;
-    width: 500px;
-    outline: none;
-}
-
-.btn:hover {
-    background-color: rgb(122, 247, 158);
-    cursor: crosshair;
-    text-shadow: 2px 1px #D6D3FC;
-}
-
-.button {
-    font-size: large;
-    background-color: rgb(122, 247, 158);
-    padding: 7px;
-    border-radius: 12px;
-    cursor: crosshair;
-    width: 195px;
-    outline: none;
-    
-}
-
-.button:hover {
-    background-color: rgb(188, 246, 204);
-    cursor: crosshair;
-    text-shadow: 2px 1px #fafafa;
-}
-                                                            /* quiz questions & answers*/
+                                                      /* quiz questions & answers*/
 .questions {
     text-align: center;
     padding-top: 40px;
@@ -181,7 +188,7 @@ header h1 {
 }
 
 #initial-input:focus {
-    border: 3px solid rgb(105, 248, 181);
+    border: 3px solid #a0522d;
 }
 
 #play-end {
@@ -202,7 +209,7 @@ position: fixed;
 top: 0;
 left: -250px;
 height: 100%;
-background-color: #f0f0f0;
+background-color: #a0522d;
 overflow-x: hidden;
 transition: 0.3s;
 padding-top: 60px;
@@ -217,7 +224,7 @@ transition: 0.3s;
 }
 
 .sidemenu a:hover {
-background-color: #ddd;
+background-color: #a0522d;
 }
 
 .sidemenu .title {
@@ -242,3 +249,13 @@ right: 10px;
 cursor: pointer;
 color: #000;
 }
+
+#username {
+    padding: 5px;
+    margin: 5px 0;
+    border: 2px solid #a0522d;
+    font-size: 14px;
+    width: 80%;
+    box-sizing: border-box;
+    font-family: David;
+  }
