@@ -356,13 +356,78 @@ function displayQuestions() {
     }
 }
 
+function showAlert(title, message, buttonText){
+    createAlertBox(title, message, buttonText)
+}
+function createAlertBox(title, message, buttonText) {
+    // Create the alert box container
+    const alertBox = document.createElement("div");
+    alertBox.classList.add("alert-box");
+
+    // Create the title
+    const alertTitle = document.createElement("h2");
+    alertTitle.textContent = title;
+    alertTitle.style.fontWeight = "bold";
+    alertTitle.style.fontSize = "24px";
+
+    // Create the message
+    const alertMessage = document.createElement("p");
+    alertMessage.textContent = message;
+    alertMessage.style.fontSize = "18px";
+    alertMessage.style.lineHeight = "1.5";
+
+    // Create the button
+    const alertButton = document.createElement("button");
+    alertButton.textContent = buttonText;
+    alertButton.style.fontSize = "16px";
+    alertButton.style.padding = "10px 20px";
+
+    // Create a "Print" button
+    const printButton = document.createElement("button");
+    printButton.textContent = "Print";
+    printButton.style.fontSize = "16px";
+    printButton.style.padding = "10px 20px";
+    printButton.style.display = "none"; // Initially hide the print button
+
+    // Append the elements to the alert box container
+    alertBox.appendChild(alertTitle);
+    alertBox.appendChild(alertMessage);
+    alertBox.appendChild(alertButton);
+    alertBox.appendChild(printButton);
+
+    // Add event listener to the "Dismiss" button
+    alertButton.addEventListener("click", () => {
+        // Remove the alert box when the "Dismiss" button is clicked
+        alertBox.remove();
+    });
+
+    // Add event listener to the print button
+    printButton.addEventListener("click", () => {
+        // Hide the print button before printing
+        printButton.style.display = "none";
+        // Print the alert box content
+        window.print();
+        // Show the print button after a short delay to avoid layout shifting
+        setTimeout(() => {
+            printButton.style.display = "block";
+        }, 100);
+    });
+
+    // Append the alert box to the document body
+    document.body.appendChild(alertBox);
+}
+
 
 function resetPage() {
     // Hide the question section and display the intro screen
     questionsEl.style.display = "none";
     introEl.style.display = "block";
     quizQuestions = 0; // Reset quizQuestions to 0
-    location.reload();
+
+    // Delay the page reset by 10 seconds
+    setTimeout(() => {
+        location.reload(); // Reload the page after 10 seconds
+    }, 20000); // 10000 milliseconds = 10 seconds
 }
 
 ////check if answer is correct
@@ -380,12 +445,9 @@ function checkAnswer(event) {
     if (quizQuestions < currentQuestions.length + 1 && userAnswer != "חזור") {
         quizQuestions++;
     }
-    // else if(userAnswer == "חזור"){
-    //     userAnswer = userAnswerArrey[quizQuestions-1];
-    // }
     else {
-        resetPage();
-        alert(username.value + " אנו מתנצלים הבוט אינו מצא תשובה החלטית\nגש לייעוץ מקצועי, הינך מוחזר לעמוד הראשי להנות משירותי הבוט מחדש במידת הצורך\nיום טוב ");
+        resetPage();  
+        showAlert("לא נקבעה החלטה",username.value + " אנו מתנצלים הבוט אינו מצא תשובה החלטית\nגש לייעוץ מקצועי, הינך מוחזר לעמוד הראשי להנות משירותי הבוט מחדש במידת הצורך\nיום טוב ", "שחרור");
     }
     setTimeout(displayQuestions, 1000); //adds 1s between questions so user can see right or wrong
 
@@ -407,36 +469,35 @@ function checkAnswer(event) {
         "לא פורסם", "נעשה בתום לב ", "דובר דבר אמת "
     ];
 
-    // Check if the selected answer triggers an alert
     if (yesAnswers.includes(userAnswer)) {
         resetPage();
-        alert(username.value + " עבור בחירתך: " + userAnswer + " יש עילה לתביעה! הינך מוחזר לעמוד הראשי להנות משירותי הבוט");
+        showAlert("נמצאה עילה לתביעה", username.value + " עבור בחירתך: " + userAnswer + " יש עילה לתביעה! הינך מוחזר לעמוד הראשי להנות משירותי הבוט", "שחרור");
     } else if (noAnswers.includes(userAnswer)) {
         resetPage();
-        alert(username.value + " עבור בחירתך: " + userAnswer + " נראה כי אין עילה לתביעה, הינך מוחזר לעמוד הראשי להנות משירותי הבוט ");
+        showAlert("לא נמצאה עילה", username.value + " עבור בחירתך: " + userAnswer + " נראה כי אין עילה לתביעה, הינך מוחזר לעמוד הראשי להנות משירותי הבוט ", "שחרור");
     }
     else if (userAnswer === "כן,מסר את מחשבו ") {
         resetPage();
-        alert(" דע לך, עבירת על ידי העברת מחשב לטכנאי אשר המחשב ללא הגנה - קיים חשש לדליפת מידע");
-        alert(username.value + " נראה כי אין עילה לתביעה, הינך מוחזר לעמוד הראשי להנות משירותי הבוט ");
+        showAlert("אבטחת מידע", " דע לך, עבירת על ידי העברת מחשב לטכנאי אשר המחשב ללא הגנה - קיים חשש לדליפת מידע", "שחרור");
+        showAlert("לא נמצאה עילה", username.value + " נראה כי אין עילה לתביעה, הינך מוחזר לעמוד הראשי להנות משירותי הבוט ", "שחרור");
     }
     else if (userAnswer === "כן נצפה") {
         resetPage();
-        alert("על הנפגע להקפיד בעבודה עם המחשב, לוודא שהמידע שבו לא מוצג כך שאנשים נוספים יוכלו לצפות בתכנים מעבר לכתף שלו");
-        alert(username.value + " נראה כי אין עילה לתביעה, הינך מוחזר לעמוד הראשי להנות משירותי הבוט ");
+        showAlert("צפיית מידע", "על הנפגע להקפיד בעבודה עם המחשב, לוודא שהמידע שבו לא מוצג כך שאנשים נוספים יוכלו לצפות בתכנים מעבר לכתף שלו", "שחרור");
+        showAlert("לא נמצאה עילה", username.value + " נראה כי אין עילה לתביעה, הינך מוחזר לעמוד הראשי להנות משירותי הבוט ", "שחרור");
     }
     else if (userAnswer === "מחליף כל רבעון " || userAnswer === "מוצפן") {
         resetPage();
-        alert("תעמוד לזכותך התנהלות שביצעת מאמצים למנוע את החדירה");
-        alert(username.value + " יש עילה לתביעה! אבל הנפגע עשה הכל");
+        showAlert("מניעת חדירה ", "תעמוד לזכותך התנהלות שביצעת מאמצים למנוע את החדירה", "שחרור");
+        showAlert(" נמצאה עילה", username.value + " יש עילה לתביעה! אבל הנפגע עשה הכל");
     }
     else if (userAnswer === " מונח מתחת למקלדת" || userAnswer === "במקום גלוי") {
         resetPage();
-        alert("יש לך אשם תורם שביצעת את החובה שחלה עליך ואפשרת את חשיפת המידע שלך");
-        alert(username.value + " נראה כי אין עילה לתביעה, הינך מוחזר לעמוד הראשי להנות משירותי הבוט ");
+        showAlert("אבטחת מידע", "יש לך אשם תורם שביצעת את החובה שחלה עליך ואפשרת את חשיפת המידע שלך", "שחרור");
+        showAlert("לא נמצאה עילה", username.value + " נראה כי אין עילה לתביעה, הינך מוחזר לעמוד הראשי להנות משירותי הבוט ", "שחרור");
     }
     else if (userAnswer === "לא הגנתי/אבטחתי ") {
-        alert("מומלץ מאוד לאבטח את המחשב");
+        showAlert("אבטחת מידע", "מומלץ מאוד לאבטח את המחשב", "שחרור");
     }
 
 }
@@ -454,7 +515,7 @@ goBackBtn.addEventListener("click", function() {
 });
 stepBackBtn.addEventListener("click", function() {
     // go back one question
-    userAnswerArrey.pop();
+    userAnswer = userAnswerArrey.pop();
     if (quizQuestions > 0) {
         quizQuestions--;
         updateStatusLabels();
