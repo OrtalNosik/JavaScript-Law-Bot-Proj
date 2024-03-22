@@ -329,7 +329,7 @@ function displayQuestions() {
     // Check if there are no more questions in the current set
     if (quizQuestions >= currentQuestions.length) {
         resetPage();
-        alert(username.value + " אנו מתנצלים הבוט אינו מצא תשובה החלטית. אנא גש לייעוץ מקצועי, הינך מוחזר לעמוד הראשי בכדי להנות משירותי הבוט מחדש. יום טוב ");
+        showAlert("לא נקבעה החלטה",username.value + " אנו מתנצלים הבוט אינו מצא תשובה החלטית. אנא גש לייעוץ מקצועי, הינך מוחזר לעמוד הראשי בכדי להנות משירותי הבוט מחדש. יום טוב ","שחרור");
     } else {
         questionEl.textContent = currentQuestions[quizQuestions].question;
         asw1Btn.textContent = currentQuestions[quizQuestions].answers[0];
@@ -452,7 +452,7 @@ function checkAnswer(event) {
     setTimeout(displayQuestions, 1000); //adds 1s between questions so user can see right or wrong
 
     var yesAnswers = ["כן סירב", "עידוד הוצאות כספים", "מעל 20", "10-20", "2-10",
-        "1 ויותר ", "10+",
+         "10+",
         "גוף פרטי הפועל למטרות רווח", "רשויות ציבוריות, כגון משרד ממשלתי או רשות מקומית ", "גוף הפועל שלא למטרות רווח, כגון עמותה המספקת שירות לציבור",
         "ארגון העוסק בקידום זכויותיהם של בעלי מוגבלויות ", "הנציבות ", "אדם עם מוגבלות ",
         " גניבת פרטים אישיים (תמונות וכו)/ פרטי תשלום (גניבת כרטיס אשראי)  ",
@@ -489,7 +489,6 @@ function checkAnswer(event) {
     else if (userAnswer === "מחליף כל רבעון " || userAnswer === "מוצפן") {
         resetPage();
         showAlert("מניעת חדירה ", "תעמוד לזכותך התנהלות שביצעת מאמצים למנוע את החדירה", "שחרור");
-        showAlert(" נמצאה עילה", username.value + " יש עילה לתביעה! אבל הנפגע עשה הכל");
     }
     else if (userAnswer === " מונח מתחת למקלדת" || userAnswer === "במקום גלוי") {
         resetPage();
