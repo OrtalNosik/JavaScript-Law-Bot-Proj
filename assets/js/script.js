@@ -282,16 +282,17 @@ function updateStatusLabels() {
 
         userChoiceDisplay.textContent = `בהמשך לבחירתך האחרונה: ${userAnswer}`;
     }
+    console.log(userAnswer);
+    if(userAnswer != "!התחל"){
+        if(userAnswer == "חזור"){
+            questionNumberDisplay.textContent = `הנך במספר שאלה: ${quizQuestions }`;
+        }
+        else{
+            questionNumberDisplay.textContent = `הנך במספר שאלה: ${quizQuestions + 1}`;
+        }
 
-    if(userAnswer == "חזור"){
-        questionNumberDisplay.textContent = `הנך במספר שאלה: ${quizQuestions }`;
+        sumOfQuestion.textContent =` מתוך: ${currentQuestions.length}`;
     }
-    else{
-        questionNumberDisplay.textContent = `הנך במספר שאלה: ${quizQuestions + 1}`;
-    }
-
-    sumOfQuestion.textContent =` מתוך: ${currentQuestions.length}`;
-
     /////////display the user history choice/////
     var menuList = document.getElementById("menuContent");
     // Clear any existing content in the menu
