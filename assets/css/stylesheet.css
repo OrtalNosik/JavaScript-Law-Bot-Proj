@@ -238,11 +238,23 @@ padding: 10px;
     font-size: 15px;
     font-weight: bold;
     padding: 10px;
-    }
+}
+
 .sidemenu .subsubtitle {
     font-size: 15px;
     padding: 10px;
-    }
+}
+
+.sidemenu ul {
+    padding: 0;
+    list-style: none;
+}
+
+.sidemenu ul li {
+    display: block;
+    margin-bottom: 12px; /* Adjust as needed */
+}
+
 /* Close button style */
 .close-btn {
 position: absolute;

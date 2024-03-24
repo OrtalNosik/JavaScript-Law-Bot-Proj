@@ -282,12 +282,14 @@ function updateStatusLabels() {
 
         userChoiceDisplay.textContent = `בהמשך לבחירתך האחרונה: ${userAnswer}`;
     }
-    // Update the question number display
-    if (userAnswerArrey.length === 0) {
-        questionNumberDisplay.textContent = `הנך במספר שאלה: 1`;
-    } else {
-        questionNumberDisplay.textContent = `הנך במספר שאלה: ${quizQuestions}`;
+
+    if(userAnswer=="חזור"){
+        questionNumberDisplay.textContent = `הנך במספר שאלה: ${quizQuestions }`;
     }
+    else{
+        questionNumberDisplay.textContent = `הנך במספר שאלה: ${quizQuestions + 1}`;
+    }
+
     sumOfQuestion.textContent =` מתוך: ${currentQuestions.length}`;
 
     /////////display the user history choice/////
