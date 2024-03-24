@@ -258,7 +258,7 @@ function startQuiz() {
     displayQuestions(quizQuestions) //displays questions after timer begins
 }
 
-///////////////////////Function to update the labels///////////////////////
+///////////////////////Function to update the status labels///////////////////////
 function updateStatusLabels() {
     userAnswer = event.target.textContent; // Update userAnswer
     //let size = userAnswerArrey.length;
@@ -283,7 +283,7 @@ function updateStatusLabels() {
         userChoiceDisplay.textContent = `בהמשך לבחירתך האחרונה: ${userAnswer}`;
     }
 
-    if(userAnswer=="חזור"){
+    if(userAnswer == "חזור"){
         questionNumberDisplay.textContent = `הנך במספר שאלה: ${quizQuestions }`;
     }
     else{
@@ -429,7 +429,7 @@ function resetPage() {
     // Delay the page reset by 10 seconds
     setTimeout(() => {
         location.reload(); // Reload the page after 10 seconds
-    }, 20000); // 10000 milliseconds = 10 seconds
+    }, 10000); // 10000 milliseconds = 10 seconds
 }
 
 ////check if answer is correct
@@ -507,12 +507,12 @@ function checkAnswer(event) {
 startBtn.addEventListener("click", startQuiz)
 goBackBtn.addEventListener("click", function() {
     // Reset the quiz to the initial state
-    resetPage();
+    questionsEl.style.display = "none";
+    introEl.style.display = "block";
+    location.reload();
     quizQuestions = 0;
     firstFlagChoice = true;
     userAnswer = "";
-    correctWrong.innerHTML = ""; // Clear the correct-wrong div
-    displayQuestions(); // Display the initial question
 });
 stepBackBtn.addEventListener("click", function() {
     // go back one question
