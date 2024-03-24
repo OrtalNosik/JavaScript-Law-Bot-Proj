@@ -34,6 +34,7 @@ var topic; //נושא
 // Get references to the label elements
 const plaintiffDisplay = document.getElementById('plaintiff-display');
 const usernameDisplayStatus = document.getElementById('username-display-status');
+const topicDisplay = document.getElementById('topic-display');
 const userChoiceDisplay = document.getElementById('user-choice-display');
 const questionNumberDisplay = document.getElementById('question-number-display');
 const sumOfQuestion = document.getElementById('sum-of-question');
@@ -276,7 +277,7 @@ function updateStatusLabels() {
     plaintiffDisplay.textContent = PlaintiffDisplay;
 
     if (topic != null) {
-        plaintiffDisplay.textContent = `בנושא ${topic}`;
+        topicDisplay.textContent = `בנושא ${topic}`;
     }
     if (userAnswer != null && userAnswer !="!התחל"){
 
