@@ -367,10 +367,12 @@ function displayQuestions() {
 function showAlert(title, message, buttonText){
     createAlertBox(title, message, buttonText)
 }
+
 function createAlertBox(title, message, buttonText) {
     // Create the alert box container
     const alertBox = document.createElement("div");
     alertBox.classList.add("alert-box");
+    alertBox.style.backgroundColor = "#000000";
 
     // Create the title
     const alertTitle = document.createElement("h2");
@@ -390,40 +392,39 @@ function createAlertBox(title, message, buttonText) {
     alertButton.style.fontSize = "16px";
     alertButton.style.padding = "10px 20px";
 
-    // Create a "Print" button
+    // Create "חזור לראשית" button
+    const goBackButton = document.createElement("button");
+    goBackButton.textContent = "חזור לראשית";
+    goBackButton.style.fontSize = "16px";
+    goBackButton.style.padding = "10px 20px";
+    // Create "הדפס" button
     const printButton = document.createElement("button");
-    printButton.textContent = "Print";
+    printButton.textContent = "הדפס"; 
     printButton.style.fontSize = "16px";
     printButton.style.padding = "10px 20px";
-    printButton.style.display = "none"; // Initially hide the print button
 
-    // Append the elements to the alert box container
     alertBox.appendChild(alertTitle);
     alertBox.appendChild(alertMessage);
+    alertBox.appendChild(goBackButton); 
     alertBox.appendChild(alertButton);
     alertBox.appendChild(printButton);
 
-    // Add event listener to the "Dismiss" button
+    goBackButton.addEventListener("click", goBack);
     alertButton.addEventListener("click", () => {
         // Remove the alert box when the "Dismiss" button is clicked
         alertBox.remove();
     });
-
-    // Add event listener to the print button
     printButton.addEventListener("click", () => {
-        // Hide the print button before printing
         printButton.style.display = "none";
-        // Print the alert box content
         window.print();
         // Show the print button after a short delay to avoid layout shifting
-        setTimeout(() => {
-            printButton.style.display = "block";
-        }, 100);
+        //setTimeout(() => {
+        printButton.style.display = "block";
+        //}, 100);
     });
-
-    // Append the alert box to the document body
     document.body.appendChild(alertBox);
 }
+
 
 
 function resetPage() {
@@ -433,9 +434,9 @@ function resetPage() {
     quizQuestions = 0; // Reset quizQuestions to 0
 
     // Delay the page reset by 10 seconds
-    //setTimeout(() => {
+    setTimeout(() => {
         location.reload(); // Reload the page after 10 seconds
-   // }, 10000); // 10000 milliseconds = 10 seconds
+    }, 20000); // 10000 milliseconds = 10 seconds
 }
 
 ////check if answer is correct
@@ -509,9 +510,7 @@ function checkAnswer(event) {
 
 }
 
-//////////////////////////event listeners//////////////////////
-startBtn.addEventListener("click", startQuiz)
-goBackBtn.addEventListener("click", function() {
+function goBack() {
     // Reset the quiz to the initial state
     questionsEl.style.display = "none";
     introEl.style.display = "block";
@@ -519,29 +518,25 @@ goBackBtn.addEventListener("click", function() {
     quizQuestions = 0;
     firstFlagChoice = true;
     userAnswer = "";
-});
-stepBackBtn.addEventListener("click", function() {
-    // go back one question
-    userAnswer = userAnswerArrey.pop();
-    if (quizQuestions > 0) {
-        quizQuestions--;
-        updateStatusLabels();
-        displayQuestions(); // Display the previous question
-    }
-});
- // JavaScript to handle menu button click
- document.getElementById("menuButton").addEventListener("click", function () {
+}
+
+//////////////////////////event listeners//////////////////////
+startBtn.addEventListener("click", startQuiz)
+goBackBtn.addEventListener("click", goBack);
+
+// JavaScript to handle menu button click
+document.getElementById("menuButton").addEventListener("click", function () {
     var sideMenu = document.getElementById("sideMenu");
     if (sideMenu.style.left === "0px") {
-      sideMenu.style.left = "-250px";
+        sideMenu.style.left = "-250px";
     } else {
-      sideMenu.style.left = "0px";
+        sideMenu.style.left = "0px";
     }
-  });
+});
 
-  // JavaScript to handle close button click
-  document.getElementById("closeButton").addEventListener("click", function () {
+// JavaScript to handle close button click
+document.getElementById("closeButton").addEventListener("click", function () {
     var sideMenu = document.getElementById("sideMenu");
     sideMenu.style.left = "-250px";
-  });
+});
 
