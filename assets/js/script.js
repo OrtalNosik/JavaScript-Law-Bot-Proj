@@ -520,9 +520,21 @@ function goBack() {
     userAnswer = "";
 }
 
+function stepBack() {
+    if (quizQuestions > 0) {
+        quizQuestions--;
+        displayQuestions();
+        userAnswerArrey.pop();
+        updateStatusLabels();
+    } else {
+        showAlert("אין חזור","הינך בשאלה הראשונה אם ברצונך לבחור נושא מחדש חזור לראשית","שחרר");
+    }
+}
+
 //////////////////////////event listeners//////////////////////
 startBtn.addEventListener("click", startQuiz)
 goBackBtn.addEventListener("click", goBack);
+stepBackBtn.addEventListener("click", stepBack);
 
 // JavaScript to handle menu button click
 document.getElementById("menuButton").addEventListener("click", function () {
