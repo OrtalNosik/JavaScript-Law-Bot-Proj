@@ -17,8 +17,8 @@
         <div class="sidemenu" id="sideMenu">
             <span class="close-btn" id="closeButton">&times;</span> <!-- Close button -->
             <div class="title">היסטוריית הצ'אט</div>
-            <h5 class="subtitle">כאן מוצג כל היסטוריית בחירותך במסגרת מסלול השאלות</h5>
-            <h4 id="topic-display"></h4>    <br>
+            <h5 class="subtitle">כאן מוצגת היסטוריית בחירותך במסגרת מסלול השאלות</h5>
+            <h4 id="topic-display" class="subtitle"></h4>    <br>
             <ul id="menuContent" class="subsubtitle">
                 <!-- Array content will be dynamically added here -->
             </ul><br>
@@ -31,15 +31,16 @@
             <img src="./assets/images/law.png" />
             <p>
             ,אתה מוזמן לענות על השאלות הבאות<br />
-            .עבור כל שאלה המערכת שלנו תחשב אם יש עילה לתביעה או לא בהתאם לבחירותך<br />
+            עבור כל שאלה המערכת תחשב אם יש עילה לתביעה או לא <br />
+            .בהתאם לבחירותך<br />
             ?תחילה מה השם שלך
             </p>
             <!-- Add user input section -->
             <section id="user-input" class="user-input">
                 <input type="text" id="username" name="username" style="direction: rtl;" placeholder="הכנס את שמך בבקשה" /><br />
-                <label for="plaintiff">תובע</label>
+                <label for="plaintiff" style="font-size: 20px;">תובע</label>
                 <input type="radio" id="plaintiff" name="plaintiff" /><br />
-                <label for="defendant">נתבע</label>
+                <label for="defendant" style="font-size: 20px;">נתבע</label>
                 <input type="radio" id="defendant" name="plaintiff" />
             </section>
             <button id="start" type="button">!התחל</button>
@@ -55,7 +56,7 @@
                 <h3 id="sum-of-question"></h3> <br>
             </section>
             <br>
-            <h2 id="question">Question goes here</h2>
+            <h2 id="question" style="font-size: 30px;">Question goes here</h2>
             <ul>
                 <li><button id="asw1" type="button" class="btn">answer1</button></li>
                 <li><button id="asw2" type="button" class="btn">answer2</button></li>

@@ -378,29 +378,29 @@ function createAlertBox(title, message, buttonText) {
     const alertTitle = document.createElement("h2");
     alertTitle.textContent = title;
     alertTitle.style.fontWeight = "bold";
-    alertTitle.style.fontSize = "24px";
+    alertTitle.style.fontSize = "26px";
 
     // Create the message
     const alertMessage = document.createElement("p");
     alertMessage.textContent = message;
-    alertMessage.style.fontSize = "18px";
+    alertMessage.style.fontSize = "22px";
     alertMessage.style.lineHeight = "1.5";
 
     // Create the button
     const alertButton = document.createElement("button");
     alertButton.textContent = buttonText;
-    alertButton.style.fontSize = "16px";
+    alertButton.style.fontSize = "20px";
     alertButton.style.padding = "10px 20px";
 
     // Create "חזור לראשית" button
     const goBackButton = document.createElement("button");
     goBackButton.textContent = "חזור לראשית";
-    goBackButton.style.fontSize = "16px";
+    goBackButton.style.fontSize = "20px";
     goBackButton.style.padding = "10px 20px";
     // Create "הדפס" button
     const printButton = document.createElement("button");
     printButton.textContent = "הדפס"; 
-    printButton.style.fontSize = "16px";
+    printButton.style.fontSize = "20px";
     printButton.style.padding = "10px 20px";
 
     alertBox.appendChild(alertTitle);
