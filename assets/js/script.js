@@ -283,7 +283,7 @@ function updateStatusLabels() {
 
         userChoiceDisplay.textContent = `בהמשך לבחירתך האחרונה: ${userAnswer}`;
     }
-    console.log(userAnswer);
+
     if(userAnswer != "!התחל"){
         if(userAnswer == "חזור"){
             questionNumberDisplay.textContent = `הנך במספר שאלה: ${quizQuestions }`;
@@ -300,12 +300,16 @@ function updateStatusLabels() {
     menuList.innerHTML = "";
     // Populate the menu with the content of userAnswerArray
     var index = 1;
+    var li;
     userAnswerArrey.forEach(function (item) {
-        var li = document.createElement("li");
+        li = document.createElement("li");
         li.textContent = index + "." + item;
         menuList.appendChild(li);
         index++
     });
+    li = document.createElement("li");
+    li.textContent = index + "." + userAnswer;
+    menuList.appendChild(li);
 }
 
 
@@ -429,9 +433,9 @@ function resetPage() {
     quizQuestions = 0; // Reset quizQuestions to 0
 
     // Delay the page reset by 10 seconds
-    setTimeout(() => {
+    //setTimeout(() => {
         location.reload(); // Reload the page after 10 seconds
-    }, 10000); // 10000 milliseconds = 10 seconds
+   // }, 10000); // 10000 milliseconds = 10 seconds
 }
 
 ////check if answer is correct
