@@ -106,12 +106,12 @@ header h1 {
 .intro h1 {
     font-size: 40px;
     padding-bottom: 20px;
-    font-family: David;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .intro p {
     font-size: x-large;
-    font-family: David;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .intro button {
@@ -121,7 +121,7 @@ header h1 {
     padding: 15px;
     border-radius: 12px;
     cursor: crosshair;
-    font-family: David;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .intro button:hover {
