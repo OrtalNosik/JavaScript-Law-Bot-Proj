@@ -29,8 +29,10 @@ This is a quiz application designed to assess whether there are potential ground
   Open index.html in your browser
   
 ## Screens UI
-
-![image](https://github.com/OrtalNosik/JavaScript-Law-Bot-Proj/assets/93153515/98b51d0b-e8ca-4402-945c-1520b478bf2c)
-![image](https://github.com/OrtalNosik/JavaScript-Law-Bot-Proj/assets/93153515/7d30c0af-d249-40ad-afc4-4248b809430f)
-![image](https://github.com/OrtalNosik/JavaScript-Law-Bot-Proj/assets/93153515/94949a9a-3464-4d79-a0bc-a4b1b707327c)
+![צילום מסך 2024-05-18 111924](https://github.com/OrtalNosik/JavaScript-Law-Bot-Proj/assets/93153515/03515951-595d-429f-b799-fa65281f521d)
+![צילום מסך 2024-05-18 111944](https://github.com/OrtalNosik/JavaScript-Law-Bot-Proj/assets/93153515/11e48af9-defe-4a75-81b0-726f820d4f8d)
+![צילום מסך 2024-05-18 112031](https://github.com/OrtalNosik/JavaScript-Law-Bot-Proj/assets/93153515/670f91ec-262e-4ecf-9065-fefac1eb3b70)
+![צילום מסך 2024-05-18 112222](https://github.com/OrtalNosik/JavaScript-Law-Bot-Proj/assets/93153515/9a34fc2b-237a-4b6f-9e87-884b00223f49)
+![צילום מסך 2024-05-18 112243](https://github.com/OrtalNosik/JavaScript-Law-Bot-Proj/assets/93153515/70f6c4b4-39ae-40bd-91fe-9ae56cde7fe1)
+![צילום מסך 2024-05-18 112258](https://github.com/OrtalNosik/JavaScript-Law-Bot-Proj/assets/93153515/52a3c356-3817-46a4-9200-e952876cf4d7)
 
